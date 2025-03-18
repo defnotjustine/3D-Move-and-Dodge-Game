@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2b8o5xg1758k"]
 
 [ext_resource type="PackedScene" uid="uid://bglbedmu7tbb1" path="res://assets/steve.tscn" id="1_u52ul"]
+[ext_resource type="Script" uid="uid://bqmhwua8afjyf" path="res://scripts/steve.gd" id="2_vonw3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 
@@ -14,8 +15,6 @@ size = Vector3(15, 1, 15)
 [sub_resource type="BoxMesh" id="BoxMesh_vonw3"]
 size = Vector3(15, 1, 15)
 
-[sub_resource type="Environment" id="Environment_vonw3"]
-
 [node name="Level" type="Node3D"]
 
 [node name="Box1" type="RigidBody3D" parent="."]
@@ -28,7 +27,7 @@ shape = SubResource("BoxShape3D_5xgho")
 mesh = SubResource("BoxMesh_u52ul")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.770558, 0.248549, -0.586911, 1.0175e-08, 0.920832, 0.38996, 0.63737, -0.300487, 0.709554, -0.0756787, 0.968357, 2.23703)
+transform = Transform3D(0.989657, 0.102831, -0.100026, -0.0667339, 0.947232, 0.313525, 0.126988, -0.303607, 0.944297, -0.0756787, 2.30681, 5.82536)
 environment = SubResource("Environment_u52ul")
 fov = 96.6131
 
@@ -43,8 +42,6 @@ mesh = SubResource("BoxMesh_vonw3")
 
 [node name="Steve" parent="." instance=ExtResource("1_u52ul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697918, 0)
+script = ExtResource("2_vonw3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vonw3")
