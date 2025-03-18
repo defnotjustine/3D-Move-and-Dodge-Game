@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2b8o5xg1758k"]
+
+[ext_resource type="PackedScene" uid="uid://bglbedmu7tbb1" path="res://assets/steve.tscn" id="1_u52ul"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
+
+[sub_resource type="Environment" id="Environment_u52ul"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u52ul"]
+size = Vector3(15, 1, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vonw3"]
+size = Vector3(15, 1, 15)
+
+[sub_resource type="Environment" id="Environment_vonw3"]
+
+[node name="Level" type="Node3D"]
+
+[node name="Box1" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.977522, -0.0758727, 0.196706, -0.175247, 0.811108, -0.558025, -0.117211, -0.579955, -0.806173, 4.57366, 1.85011, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box1"]
+shape = SubResource("BoxShape3D_5xgho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box1"]
+mesh = SubResource("BoxMesh_u52ul")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.770558, 0.248549, -0.586911, 1.0175e-08, 0.920832, 0.38996, 0.63737, -0.300487, 0.709554, -0.0756787, 0.968357, 2.23703)
+environment = SubResource("Environment_u52ul")
+fov = 96.6131
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.545145, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_u52ul")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_vonw3")
+
+[node name="Steve" parent="." instance=ExtResource("1_u52ul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697918, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vonw3")
