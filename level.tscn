@@ -1,13 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2b8o5xg1758k"]
+[gd_scene load_steps=10 format=3 uid="uid://b2b8o5xg1758k"]
 
 [ext_resource type="PackedScene" uid="uid://bglbedmu7tbb1" path="res://assets/steve.tscn" id="1_u52ul"]
 [ext_resource type="Script" uid="uid://bqmhwua8afjyf" path="res://scripts/steve.gd" id="2_vonw3"]
+[ext_resource type="Environment" uid="uid://cix8v55job04" path="res://new_env.tres" id="3_0b4ue"]
+[ext_resource type="Script" uid="uid://dha12wem0eisf" path="res://camera_3d.gd" id="3_oi3di"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xgho"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u52ul"]
-
-[sub_resource type="Environment" id="Environment_u52ul"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u52ul"]
 size = Vector3(15, 1, 15)
@@ -30,11 +30,6 @@ shape = SubResource("BoxShape3D_5xgho")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Box1"]
 mesh = SubResource("BoxMesh_u52ul")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.989657, 0.102831, -0.100026, -0.0667339, 0.947232, 0.313525, 0.126988, -0.303607, 0.944297, -0.0756787, 2.30681, 5.82536)
-environment = SubResource("Environment_u52ul")
-fov = 96.6131
-
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.545145, 0)
 
@@ -45,7 +40,29 @@ shape = SubResource("BoxShape3D_u52ul")
 mesh = SubResource("BoxMesh_vonw3")
 
 [node name="Steve" parent="." instance=ExtResource("1_u52ul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697918, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92989, 0)
 script = ExtResource("2_vonw3")
 
+[node name="cameraTarget" type="Node3D" parent="Steve"]
+transform = Transform3D(1, 0, 0, 0, 0.848538, 0.529135, 0, -0.529135, 0.848538, 0, 5.20396, 6.89252)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.998311, 0.0581042, 0, -0.0581042, 0.998311, 0, 7.27873, 15.9522)
+environment = ExtResource("3_0b4ue")
+script = ExtResource("3_oi3di")
+target = NodePath("../Steve/cameraTarget")
+speed = 2.0
+enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.788064, 0.615593, 0, -0.615593, -0.788064, 0, 11.6897, 0)
+light_color = Color(0.954598, 0.799943, 0.977061, 1)
+shadow_enabled = true
+shadow_normal_bias = 10.0
+shadow_opacity = 0.6
+directional_shadow_split_1 = 0.151
+directional_shadow_split_2 = 0.111
+directional_shadow_split_3 = 0.349
+directional_shadow_max_distance = 40.0
