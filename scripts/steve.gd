@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var velocityy = Vector3(0,0,0)
-const SPEED = 6
+const SPEED = 7
 const ROTSPEED = 7
 
 func _physics_process(delta):
