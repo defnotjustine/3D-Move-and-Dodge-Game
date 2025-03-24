@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dco3k640yvaqs"]
+
+[ext_resource type="FontFile" uid="uid://dn2wbodl770rc" path="res://fonts/ThatNogoFontCasual.ttf" id="1_5yleq"]
+[ext_resource type="FontFile" uid="uid://0crn3owylnnr" path="res://fonts/Redkost Comic.otf" id="2_ylpcl"]
+[ext_resource type="Script" uid="uid://cuks6pa8lebcv" path="res://scripts/button_title_play.gd" id="3_ylpcl"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.714713, 0.683597, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(1, 0.578692, 0.631172, 1)
+theme_override_colors/font_shadow_color = Color(0.486275, 0.309804, 1, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_fonts/font = ExtResource("1_5yleq")
+theme_override_font_sizes/font_size = 150
+text = "Simple 3D Game!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="button-title-play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 421.0
+offset_right = 784.0
+offset_bottom = 513.0
+theme_override_colors/font_hover_pressed_color = Color(1, 0.660999, 0.697446, 1)
+theme_override_colors/font_color = Color(0.486275, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ylpcl")
+theme_override_font_sizes/font_size = 70
+text = "Play!"
+flat = true
+script = ExtResource("3_ylpcl")
+
+[connection signal="pressed" from="button-title-play" to="button-title-play" method="_on_pressed"]
