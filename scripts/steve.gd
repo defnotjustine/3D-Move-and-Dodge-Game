@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var velocityy = Vector3(0,0,0)
-const SPEED = 7
+const SPEED = 8
 const ROTSPEED = 7
 
 func _physics_process(delta):
@@ -30,3 +30,8 @@ func _physics_process(delta):
 		velocity.z = lerp(velocity.z, 0.0, 0.1)
 		
 	move_and_slide()
+
+
+func _on_enemy_body_entered(body: Node3D):
+	if body.name == "Steve":
+		get_tree().change_scene_to_file("res://GameOver.tscn")
